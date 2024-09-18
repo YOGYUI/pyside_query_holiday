@@ -50,6 +50,8 @@ def query_holidays_dataframe(year: int, api_key: str) -> pd.DataFrame:
                 "이름": node_datename.text.strip(),
                 "날짜": datetime.strptime(node_locdate.text.strip(), '%Y%m%d')
             })
-        return pd.DataFrame(items)
+        df = pd.DataFrame(items)
+        df.index = [x + 1 for x in range(len(items))]
+        return df
     else:
         raise ValueError(f'response error (status code={response.status_code})')

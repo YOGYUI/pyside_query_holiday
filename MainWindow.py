@@ -147,11 +147,11 @@ class MainWindow(QMainWindow):
     def onClickButtonClipboard(self):
         if self._df_result is None:
             return
-        self._df_result.to_clipboard(excel=True, sep='\t')
+        self._df_result.to_clipboard(excel=True, sep='\t', index=True)
 
     def onClickButtonCSV(self):
         if self._df_result is None:
             return
         path, _ = QFileDialog.getSaveFileName(self, "Save CSV", "result.csv", "CSV Files (*.csv)")
         if path:
-            self._df_result.to_csv(path, sep=',')
+            self._df_result.to_csv(path, sep=',', index=True)
