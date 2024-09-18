@@ -66,6 +66,7 @@ class MainWindow(QMainWindow):
         vbox.addWidget(self._tableResult)
 
         subwgt = QWidget()
+        subwgt.setSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
         hbox = QHBoxLayout(subwgt)
         hbox.setContentsMargins(0, 0, 0, 0)
         hbox.setSpacing(4)
