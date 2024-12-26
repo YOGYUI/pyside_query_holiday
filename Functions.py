@@ -33,6 +33,8 @@ def query_holidays_dataframe(year: int, api_key: str) -> pd.DataFrame:
         if result_code != 0:
             raise ValueError(f'request error (code={result_code}, msg={node_result_msg.text}')
 
+        weekday_name = ["월", "화", "수", "목", "금", "토", "일"]
+
         node_body = root.find('body')
         if node_body is None:
             raise ValueError('<body> tag is not exist')
@@ -46,9 +48,11 @@ def query_holidays_dataframe(year: int, api_key: str) -> pd.DataFrame:
                 raise ValueError('<dateName> tag is not exist')
             if node_locdate is None:
                 raise ValueError('<locdate> tag is not exist')
+            timestamp = datetime.strptime(node_locdate.text.strip(), '%Y%m%d')
             items.append({
                 "이름": node_datename.text.strip(),
-                "날짜": datetime.strptime(node_locdate.text.strip(), '%Y%m%d')
+                "날짜": timestamp,
+                "요일": weekday_name[timestamp.weekday()]
             })
         df = pd.DataFrame(items)
         df.index = [x + 1 for x in range(len(items))]
