@@ -7,7 +7,7 @@ from typing import List, Dict
 
 
 def query_holidays_dataframe(year: int, api_key: str) -> pd.DataFrame:
-    url = "http://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo"
+    url = "https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/getRestDeInfo"
     api_key_decode = parse.unquote(api_key)
 
     params = {

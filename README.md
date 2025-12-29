@@ -1,5 +1,5 @@
 # Query Holidays Application
-Query yearly holidays from `public data portal` (data.go.kr).<br>
+Query yearly holidays from [`public data portal`](https://data.go.kr).<br>
 Qt6(PySide6) is utilized as GUI platform.
 
 Prerequisite
